@@ -1,0 +1,117 @@
+header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #bcd9bb;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%; 
+  }
+  
+  header li {
+    float: left;
+  }
+  
+  header li a {
+    display: block;
+    color: #501b1d;
+    text-align: center;
+    padding: 25px 16px;
+    text-decoration: none;
+    font-family: "Barlow Thin", sans-serif;
+  }
+  
+  /* Change the link color to #111 (black) on hover */
+  header li a:hover {
+    background-color:#501b1d;
+    color: #dbaa5c;
+  }
+
+  header .active {
+    background-color: #4CAF50;
+  }
+
+  .logo {
+    height: 100px;
+  }
+  nav ul input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-top: 16px;
+    margin-right: 16px;
+    font-size: 17px;
+    color: #501b1d;
+  }
+
+  body {
+    
+    background-color: #e8e8e8;
+  
+  }
+
+  h1 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 2em;
+    letter-spacing: 1.2px;
+  }
+
+  h2 {
+    font-family: 'Barlow', sans-serif;
+    font-size: 1.4em;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+p, .author {
+    font-family: 'Arvo', serif;
+    font-weight: 300;
+}
+
+  main {
+    margin-top: 90px;
+    display: flex;
+
+  }
+
+  ul.card-list{
+    display: flex; 
+    flex-wrap: wrap; 
+    margin: 25px;
+    list-style: none;
+  }
+
+  li.card {
+      margin: 10px;
+      background-color: white;
+      padding: 25px;
+      flex: 0 0 33%;
+      list-style: none;
+      border: 1px solid #c2a678;
+  }
+
+  .content-wrapper {
+
+  }
+
+  img {
+      max-width: 100%
+  }
+
+  div#map {
+      position: sticky;
+      position: -webkit-sticky;
+      top: 130px;
+      right: 1px;   
+      width: 450px;
+      margin-top: 40px;
+      border: 5px solid #c2a678;
+      
+  }
+
+ /* .location-galery {
+      text: read site katie sent;
+  }*/
+
