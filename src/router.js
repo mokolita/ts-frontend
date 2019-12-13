@@ -9,7 +9,7 @@ class Router {
     }
 
     render(page){
-    this.routes[page].render
+    this.routes[page].render()
     }
 
     assignCallBack(callback){

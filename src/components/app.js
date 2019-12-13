@@ -4,7 +4,7 @@ class App {
         this.adapter = new BaseAdapter()
         this.initBindingsandEventListeners()
         this.router = new Router({
-            'welcome': new WelcomePage(this.page, this.adapter),
+            'welcome': new Welcome(this.page, this.adapter),
             'login': new LoginPage(this.page, this.adapter),
             'signup': new Signup(this.page, this.adapter),
 
@@ -20,11 +20,14 @@ class App {
         this.page = document.querySelector('#page-container')
     }
 
-    renderPage(page){
-        this.router.render(page) 
-    }
 
     pageManagerRedirect(page){
         this.renderPage(page)
     }
+
+    renderPage(page){
+        this.router.render(page) 
+    }
+
+    
 }
