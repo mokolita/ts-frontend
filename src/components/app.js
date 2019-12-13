@@ -9,6 +9,7 @@ class App {
             'signup': new Signup(this.page, this.adapter),
 
         })
+        this.router.assignCallBack(this.pageManagerRedirect.bind(this))
         this.renderPage('welcome')
 
     }
@@ -21,5 +22,9 @@ class App {
 
     renderPage(page){
         this.router.render(page) 
+    }
+
+    pageManagerRedirect(page){
+        this.renderPage(page)
     }
 }
