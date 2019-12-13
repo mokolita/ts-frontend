@@ -3,7 +3,13 @@ class App {
     constructor(){
         this.adapter = new BaseAdapter()
         this.initBindingsandEventListeners()
-        this.renderPage(new Signup(this.page, this.adapter))
+        this.router = new Router({
+            'welcome': new WelcomePage(this.page, this.adapter),
+            'login': new LoginPage(this.page, this.adapter),
+            'signup': new Signup(this.page, this.adapter),
+
+        })
+        this.renderPage('welcome')
 
     }
 
@@ -14,6 +20,6 @@ class App {
     }
 
     renderPage(page){
-        page.render() 
+        this.router.render(page) 
     }
 }
