@@ -36,7 +36,7 @@ header ul {
   .logo {
     height: 100px;
   }
-  nav ul input[type=text] {
+  .search input[type='text'] {
     float: right;
     padding: 6px;
     border: none;
@@ -44,6 +44,20 @@ header ul {
     margin-right: 16px;
     font-size: 17px;
     color: #501b1d;
+  }
+
+  .search input[type='submit']{
+      float: right;
+      display:block;
+      color:black;
+      background-color:white;
+      border:1px solid black;
+      border-radius:10px;
+      margin-top:10px;
+      padding:10px;
+      cursor:pointer; 
+      margin:auto;
+      margin-top:20px;
   }
 
   body {

@@ -1,4 +1,4 @@
-class LoginPage extends PageManager {
+class LoginPage extends PageManager{
 
     constructor(container, adapter){
         super(container)
@@ -6,18 +6,23 @@ class LoginPage extends PageManager {
     }
 
     initBindingsAndEventListeners(){
-        this.form = this.container.querySelector("#login-form")
+        this.form = this.container.querySelector('form#login-form')
 
         this.form.addEventListener('submit', this.handleSubmit.bind(this))
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault()
-        const [email, password] = Array.from(e.target.querySelectorAll('input').map(i => i.value))
+        const [email, password] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
         const params = {
             user: {email, password}
         }
-        this.adapter.login(params)
+        try{
+          await this.adapter.login(params)
+          this.redirect('home')
+        }catch(err){
+          this.handleError(err)
+        }
     }
 
 

@@ -7,8 +7,11 @@ class App {
             'welcome': new Welcome(this.page, this.adapter),
             'login': new LoginPage(this.page, this.adapter),
             'signup': new Signup(this.page, this.adapter),
+            'home': new HomePage(this.page, this.adapter)
 
         })
+        const navbar = new Navbar(this.navbar, this.adapter)
+        this.router.assignNavbar(navbar)
         this.router.assignCallBack(this.pageManagerRedirect.bind(this))
         this.renderPage('welcome')
 
