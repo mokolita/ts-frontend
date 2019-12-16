@@ -25,8 +25,7 @@ class Signup extends PageManager{
           await this.adapter.signup(params)
           this.redirect('home')
         }catch(err){
-          alert(err)
-          //this.handleError(err)
+          this.handleError(err)
         }
         
     }

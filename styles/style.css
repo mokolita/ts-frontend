@@ -106,9 +106,6 @@ p, .author {
       border: 1px solid #c2a678;
   }
 
-  .content-wrapper {
-
-  }
 
   img {
       max-width: 100%
@@ -123,6 +120,17 @@ p, .author {
       margin-top: 40px;
       border: 5px solid #c2a678;
       
+  }
+
+  .alert-danger {
+    padding: 20px;
+    background-color: #501b1d; /* Red */
+    color: #e8e8e8;
+    margin-bottom: 15px;
+    position: fixed;
+    top: 0;
+    right: 50%;
+    
   }
 
  /* .location-galery {
