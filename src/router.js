@@ -15,11 +15,11 @@ class Router {
     }
 
     assignRedirect(callback){
-        this.assignCallback(callback, 'redirect')
+        this.assignCallBack(callback, 'redirect')
     }
 
     assignAlertHandler(callback){
-        this.assignCallback(callback, 'handleAlert')
+        this.assignCallBack(callback, 'handleAlert')
     }
 
     assignCallBack(callback, name){

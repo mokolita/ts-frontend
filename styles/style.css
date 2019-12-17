@@ -59,7 +59,9 @@ header ul {
       margin:auto;
       margin-top:20px;
   }
-
+  div#page-container {
+    margin-top: 110px;
+  }
   body {
     
     background-color: #e8e8e8;
@@ -85,7 +87,7 @@ p, .author {
 }
 
   main {
-    margin-top: 90px;
+    
     display: flex;
 
   }
