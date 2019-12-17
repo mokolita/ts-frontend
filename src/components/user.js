@@ -6,8 +6,22 @@ class User {
         this.first_name = first_name
         this.last_name = last_name
         this.locations = locations.map(l => new Location(l))
-        this.comments = comments.map(c => new Comment(c))
     }
+
+
+    get profileHTML(){
+        return (`
+            <div class='profile-content-wrapper'>
+                <h2>Welcome, ${this.first_name}</h2>
+                <h2>Your locations:</h2>
+                <ul class='card-list'>
+                    ${this.locations.map(l => l.liHTML)}
+                </ul>
+           </div> 
+        `)
+    }
+
+    
 
 
 }

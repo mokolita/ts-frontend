@@ -21,7 +21,7 @@ class Navbar extends PageManager {
               if(route !== this.currentPage()) { this.redirect(route) } 
             }else{
               this.adapter.token = null
-              this.redirect('welcome')
+              this.redirect('login')
             }
         }
     }
@@ -34,8 +34,7 @@ class Navbar extends PageManager {
             <ul>
                 <li><img src="styles/images/logo.png" class='logo'></li>
                 <li><a href="#" id="home-link">Home</a></li>
-                <li><a href="#" id="about-link">About</a></li>
-                <li><a href="#" id="profile-link'>Profile</a></li>
+                <li><a href="#" id='profile-link'>profile</a></li>
                 <li><a href="#" id='logout-link'>Logout</a></li>
                 <form class="search" id='navbarsearch-link'>
                     <input type="text" name="search" placeholder="Search.." >
