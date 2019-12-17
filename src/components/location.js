@@ -11,6 +11,28 @@ class Location {
         
     }
 
+    initBindingsAndEventListeners(){
+        this.form = this.container.querySelector('form#add-location-form')
+
+        this.form.addEventListener('submit', this.handleSubmit.bind(this))
+    }
+
+    async handleSubmit(e){
+        e.preventDefault()
+        const [email, password] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
+        const params = {
+            user: {email, password}
+        }
+        try{
+          await this.adapter.login(params)
+          this.redirect('profile')
+        }catch(err){
+          this.handleError(err)
+        }
+    }
+
+    get newLocationHTML()
+
     get liHTML(){
         return(`
         <li class='card' data-id="${this.id}>

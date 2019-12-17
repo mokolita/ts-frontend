@@ -12,13 +12,13 @@ class Profile extends PageManager{
 
     finalBindingsAndEventListeners(){
         const locList = this.container.querySelector('ul')
-        locList.addEventListeners('click', this.handleLocationClick.bind(this)
+        locList.addEventListeners('click', this.handleLocationClick.bind(this))
     }
 
     handleLocationClick(e){
         if(e.target.tagName === 'A'){
             const locId = e.target.dataset.id 
-            this.redirect(`/locations/${locId}`)
+            this.redirect(`/locations/${locId}`) //this should link to update functionality
         }
     }
 
