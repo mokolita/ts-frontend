@@ -12,7 +12,7 @@ class HomePage extends PageManager{
     async fetchAndRenderPageResources(){
       try{
           const locObj = await this.adapter.getAllLocations()
-          this.locations = new Location(locObj)
+          this.locations = locObj.map(l => new Location(l))
           this.renderLocations()
       }catch(err){
           this.handleError(err)
@@ -20,9 +20,14 @@ class HomePage extends PageManager{
   }
 
   renderLocations(){
-    const allLocations = this.locations.map(l => l.getAllLocations)
-    
-    this.container.innerHTML = allLocations.allLocationsLiHTML
+    const locationsLiHTML = this.locations.map(l => l.liHTML).join('')
+    const ul =  
+    `<main>
+        <ul class='card-list'>
+            ${locationsLiHTML}
+        </ul>
+    </main> `
+    this.container.innerHTML = ul
 }
 
     get staticHTML(){

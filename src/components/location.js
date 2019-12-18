@@ -11,27 +11,48 @@ class Location {
         
     }
 
-    initBindingsAndEventListeners(){
-        this.form = this.container.querySelector('form#add-location-form')
-
-        this.form.addEventListener('submit', this.handleSubmit.bind(this))
-    }
-
-    async handleSubmit(e){
-        e.preventDefault()
-        const [email, password] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
-        const params = {
-            user: {email, password}
-        }
-        try{
-          await this.adapter.login(params)
-          this.redirect('profile')
-        }catch(err){
-          this.handleError(err)
-        }
-    }
-
-    get newLocationHTML()
+   get staticHTML(){
+     return(`
+     <div class="bg-contact3">
+       
+     <div class="container-contact3">
+       <div class="wrap-contact3">
+         <form class="contact3-form validate-form" id="add-location-form">
+           <span class="contact3-form-title">
+             Post New Camping Location
+           </span>
+   
+           <div class="wrap-input3 validate-input" data-validate="Name is required">
+             <input class="input3" type="text" name="name" id="name" placeholder="Name" required>
+             <span class="focus-input3"></span>
+           </div>
+   
+           <div class="wrap-input3 validate-input" data-validate="Last name is required">
+               <input class="input3" type="area" name="last_name" id="last_name" placeholder="Last Name" required>
+               <span class="focus-input3"></span>
+             </div>
+   
+           <div class="wrap-input3 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+             <textarea form='add-location-form' class="input3" name="content" placeholder="Tell us about your sp" required>
+             <span class="focus-input3"></span>
+           </div>
+   
+           <div class="wrap-input3 validate-input" data-validate = "Address is required">
+               <input class="input3" type="text" name="address" id="address" placeholder="Address" required>
+               <span class="focus-input3"></span>
+             </div>
+   
+           <div class="container-contact3-form-btn">
+             <button class="contact3-form-btn">
+               Submit
+             </button>
+           </div>
+         </form>
+       </div>
+     </div>
+   </div>
+     `)
+   }
 
     get liHTML(){
         return(`
@@ -58,16 +79,6 @@ class Location {
         `)
     }
 
-
-    get allLocationsLiHTML(){
-        return(`
-        <main>
-            <ul class='card-list'>
-                ${this.location.map(l = l.liHTML)}
-            </ul>
-      
-        </main> `)
-    }
 
     get allLocationsMapHTML(){
         return(`

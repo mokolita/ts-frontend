@@ -13,7 +13,7 @@ class LocationAdapter{
     }
 
     async newLocationForm(params){
-        const res = await fetch(`${this.baseURL}/location/new`, {
+        const res = await fetch(`${this.baseURL}/locations`, {
             method: 'POST',
             headers: this.headers,
             body: JSON.stringify(params)

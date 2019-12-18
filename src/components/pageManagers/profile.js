@@ -39,6 +39,6 @@ class Profile extends PageManager{
     }
 
     get staticHTML(){
-        <div class='loader'></div>
+       return(`<div class='loader'></div>`)
     }
 }
