@@ -41,5 +41,9 @@ class App {
         this.router.render(page) 
     }
 
+    initMap(){
+        new MapManager(this.page)
+    }
+
     
 }

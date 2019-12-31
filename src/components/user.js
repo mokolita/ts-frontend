@@ -14,6 +14,7 @@ class User {
             <div class='profile-content-wrapper'>
                 <h2>Welcome, ${this.first_name}</h2>
                 <h2>Your locations:</h2>
+                <p><button id='location-form'>Add location</button></p>
                 <ul class='card-list'>
                     ${this.locations.map(l => l.liHTML)}
                 </ul>

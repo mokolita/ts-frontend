@@ -14,6 +14,7 @@ class HomePage extends PageManager{
           const locObj = await this.adapter.getAllLocations()
           this.locations = locObj.map(l => new Location(l))
           this.renderLocations()
+          this.renderMap()
       }catch(err){
           this.handleError(err)
       }
@@ -29,6 +30,14 @@ class HomePage extends PageManager{
     </main> `
     this.container.innerHTML = ul
 }
+
+    renderMap(){
+        this.mapContainer = this.container.appendTo('div#map-container')
+        this.map = new MapManager(this.mapContainer)
+
+        this.mapContainer.innerHTML = this.map
+
+    }
 
     get staticHTML(){
         return(` `)

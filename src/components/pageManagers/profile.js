@@ -12,7 +12,18 @@ class Profile extends PageManager{
 
     finalBindingsAndEventListeners(){
         const locList = this.container.querySelector('ul')
-        locList.addEventListeners('click', this.handleLocationClick.bind(this))
+        locList.addEventListener('click', this.handleLocationClick.bind(this))
+    }
+
+    locationsBindingsAndEventListeners(){
+        const addButton = this.container.querySelector('button')
+        addButton.addEventListener('click', this.addNewLocation.bind(this))
+        console.log('locationsBindings')
+    }
+
+    addNewLocation(e){
+        console.log('I made it to addNewLocation')
+        this.container.innerHTML = this.formHTML(e)
     }
 
     handleLocationClick(e){
@@ -35,10 +46,10 @@ class Profile extends PageManager{
     renderUser(){
         this.container.innerHTML = this.user.profileHTML
 
-        finalBindingsAndEventListeners()
+        this.finalBindingsAndEventListeners()
     }
 
     get staticHTML(){
-       return(`<div class='loader'></div>`)
+      // return(`<div class='loader'></div>`)
     }
 }

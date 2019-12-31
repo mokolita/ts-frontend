@@ -6,7 +6,7 @@ class locationPage extends PageManager {
     }
 
     initBindingsAndEventListeners(){
-        this.form = this.container.querySelector('form#add-location-form')
+        this.form = this.container.querySelector(`form`)
 
         this.form.addEventListener('submit', this.handleSubmit.bind(this))
     }
@@ -17,6 +17,7 @@ class locationPage extends PageManager {
         const params = {
             location: {name, content, latitude, longitude, user}
             }
+            addNewLocation(params)
         try{
           await this.adapter.login(params)
           this.redirect('profile')
@@ -24,4 +25,6 @@ class locationPage extends PageManager {
           this.handleError(err)
         }
     }
+
+   
 }
