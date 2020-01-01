@@ -81,6 +81,21 @@ class Location {
         `)
     }
 
+    get profileLiHTML(){
+      return(`
+      <li class='card' data-id="${this.id}">
+        <img src="bg-o1.jpg">
+        <div class='content-wrapper'>
+          <h2 class="card-title">${this.name}</h2>
+        </div>
+        <div class='more-info-container'>
+          <div class='location-gallery'></div> 
+          <p class='location-description'>${this.content}</p>
+        </div>
+        </li>
+      `)
+    }
+
 
     get allLocationsMapHTML(){
         return(`

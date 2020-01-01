@@ -10,7 +10,7 @@ class Profile extends PageManager{
         return null 
     }
 
-    finalBindingsAndEventListeners(){
+    profileBindingsAndEventListeners(){
         const locList = this.container.querySelector('ul')
         locList.addEventListener('click', this.handleLocationClick.bind(this))
     }
@@ -18,18 +18,17 @@ class Profile extends PageManager{
     locationsBindingsAndEventListeners(){
         const addButton = this.container.querySelector('button')
         addButton.addEventListener('click', this.addNewLocation.bind(this))
-        console.log('locationsBindings')
     }
 
     addNewLocation(e){
-        console.log('I made it to addNewLocation')
-        this.container.innerHTML = this.formHTML(e)
+        this.container.innerHTML = this.formHTML
     }
 
     handleLocationClick(e){
-        if(e.target.tagName === 'A'){
+        if(e.target.tagName === 'LI'){
             const locId = e.target.dataset.id 
-            this.redirect(`/locations/${locId}`) //this should link to update functionality
+            const location = this.getLocationById(locId)
+            this.renderLocation(location)
         }
     }
 
@@ -46,8 +45,26 @@ class Profile extends PageManager{
     renderUser(){
         this.container.innerHTML = this.user.profileHTML
 
-        this.finalBindingsAndEventListeners()
+        this.profileBindingsAndEventListeners()
     }
+
+    renderLocation(location){
+        if(location){
+            this.container.innerHTML = location.updateLiHTML
+            this.locationsBindingsAndEventListeners()
+        }else{
+            this.handleError({
+                type: "404 Not Found",
+                msg: "Dog was not found"
+            })
+        }
+    }
+
+
+    getLocationById(id){
+        return this.user.locations.find(l => l.id == id)
+    }
+
 
     get staticHTML(){
       // return(`<div class='loader'></div>`)
