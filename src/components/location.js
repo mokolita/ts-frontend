@@ -12,17 +12,22 @@ class Location {
           </span>
   
           <div class="wrap-input3 validate-input" data-validate="Name is required">
-            <input class="input3" type="text" name="name" id="name" placeholder="Name" value=${location ? location.name : ''} required >
+            <label for="name">Location Name</label>
+            <input class="input3" type="text" name="name" id="name" value="${location ? location.name : ''}" required >
               <span class="focus-input3"></span>
           </div>
   
           <div class="wrap-input3 validate-input">
-            <textarea form='add-location-form' class="input3" name="content" placeholder="Tell us about your spot" value=${location ? location.content : ''} required >
+            <label for="content">Tell us about your spot:</label>
+            <textarea form='add-location-form' class="input3" name="content" required >
+            ${location ? location.content : ''}
+            </textarea>
               <span class="focus-input3"></span>
           </div>
   
           <div class="wrap-input3 validate-input" data-validate = "Address is required">
-              <input class="input3" type="text" name="address" id="address" placeholder="Address" value=${location ? location.address : ''} required >
+              <label for="address">Address</label>
+              <input class="input3" type="text" name="address" id="address"  value="${location ? location.address : ''}" required >
                <span class="focus-input3"></span>
             </div>
   
@@ -92,7 +97,7 @@ class Location {
         <div class='location-gallery'></div> 
         <p class='location-description'>${this.content}</p>
         <a href='#' class='verification-button'><img scr='shutterstock_355898753.png'></a>
-        <button class="contact3-form-btn">Update</button>
+        <button class="contact3-form-btn" data-id="${this.id}">Update</button>
       </div>
       </li>
       `)

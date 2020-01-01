@@ -26,11 +26,11 @@ class Profile extends PageManager{
     }
 
     handleFormSubmit(e){
-        console.log(e)
+        console.log("profile page handleFormSubmit")
     }
 
     addNewLocation(e){
-        if(e.target.tagName === 'LI'){
+        if(e.target.tagName === 'BUTTON'){
             const locId = e.target.dataset.id 
             const location = this.getLocationById(locId)
             this.renderForm(location)
@@ -76,6 +76,7 @@ class Profile extends PageManager{
     }
 
     renderForm(location){
+        console.log(location.name)
         if(location){
             this.container.innerHTML = location.formHTML
             this.updateBindingsAndEventListeners()

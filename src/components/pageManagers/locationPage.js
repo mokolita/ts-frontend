@@ -12,12 +12,13 @@ class locationPage extends PageManager {
     }
 
     async handleSubmit(e){
+        console.log("locationPage handleSubmit")
         e.preventDefault()
         const [name, content, latitude, longitude] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
         const params = {
             location: {name, content, latitude, longitude, user}
             }
-            addNewLocation(params)
+            newLocationForm(params)
         try{
           await this.adapter.login(params)
           this.redirect('profile')
