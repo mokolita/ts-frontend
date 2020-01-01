@@ -20,8 +20,23 @@ class Profile extends PageManager{
         addButton.addEventListener('click', this.addNewLocation.bind(this))
     }
 
+    updateBindingsAndEventListeners(){
+        const submit = this.container.querySelector('button')
+        submit.addEventListener('click', this.handleFormSubmit.bind(this) )
+    }
+
+    handleFormSubmit(e){
+        console.log(e)
+    }
+
     addNewLocation(e){
-        this.container.innerHTML = this.formHTML
+        if(e.target.tagName === 'LI'){
+            const locId = e.target.dataset.id 
+            const location = this.getLocationById(locId)
+            this.renderForm(location)
+            
+        }
+        
     }
 
     handleLocationClick(e){
@@ -57,6 +72,13 @@ class Profile extends PageManager{
                 type: "404 Not Found",
                 msg: "Dog was not found"
             })
+        }
+    }
+
+    renderForm(location){
+        if(location){
+            this.container.innerHTML = location.formHTML
+            this.updateBindingsAndEventListeners()
         }
     }
 

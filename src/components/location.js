@@ -6,9 +6,9 @@ class Location {
       
     <div class="container-contact3">
       <div class="wrap-contact3">
-        <form class="contact3-form validate-form" id="${location} ? 'edit' : 'new'}-location-form">
+        <form class="contact3-form validate-form" id="${location ? 'edit' : 'new'}-location-form">
           <span class="contact3-form-title">
-            Post New Camping Location
+            Location Form
           </span>
   
           <div class="wrap-input3 validate-input" data-validate="Name is required">
@@ -58,7 +58,7 @@ class Location {
    
     get liHTML(){
         return(`
-        <li class='card' data-id="${this.id}>
+        <li class='card' data-id="${this.id}">
         <img src="bg-01.jpg">
         <div class='content-wrapper'>
           <h2 class="card-title">${this.name}</h2>
@@ -77,14 +77,31 @@ class Location {
           </div>
         </div>
         </li>
-        </li>
         `)
     }
+
+    get updateLiHTML(){
+      return(`
+      <li class='card' data-id="${this.id}">
+      <img src="bg-01.jpg">
+      <div class='content-wrapper'>
+        <h2 class="card-title">${this.name}</h2>
+        <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
+      </div>
+      <div class='more-info-container'>
+        <div class='location-gallery'></div> 
+        <p class='location-description'>${this.content}</p>
+        <a href='#' class='verification-button'><img scr='shutterstock_355898753.png'></a>
+        <button class="contact3-form-btn">Update</button>
+      </div>
+      </li>
+      `)
+  }
 
     get profileLiHTML(){
       return(`
       <li class='card' data-id="${this.id}">
-        <img src="bg-o1.jpg">
+        <img src="bg-01.jpg">
         <div class='content-wrapper'>
           <h2 class="card-title">${this.name}</h2>
         </div>
