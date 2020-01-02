@@ -17,7 +17,6 @@ class HomeAdapter{
         const res = await fetch(`${this.baseURL}/locations`, {
             headers:  this.headers
         })
-        console.log(res)
         await this.baseAdapter.checkStatus(res)
         return await res.json()
     }

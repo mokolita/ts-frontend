@@ -34,8 +34,9 @@ class Navbar extends PageManager {
             <ul>
                 <li><img src="styles/images/logo.png" class='logo'></li>
                 <li><a href="#" id="home-link">Home</a></li>
-                <li><a href="#" id='profile-link'>profile</a></li>
+                <li><a href="#" id='profile-link'>Profile</a></li>
                 <li><a href="#" id='logout-link'>Logout</a></li>
+                <li><a href="#" id='location-link'>Add Location</a></li>
                 <form class="search" id='navbarsearch-link'>
                     <input type="text" name="search" placeholder="Search.." >
                     <button  type='submit'>Search</button>

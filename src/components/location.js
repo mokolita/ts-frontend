@@ -45,15 +45,21 @@ class Location {
 
 
     constructor(location){
-        const {id, name, content, latitude, longitude, user} = location
+        const {id, name, content, latitude, longitude, user_id} = location
         this.id = id
         this.name = name 
         this.content = content
         this.latitude = latitude 
         this.longitude = longitude 
-        this.user = user
+        this.user = user_id 
         this.address = null
-        // this.comments = comments.map(c => new Comment(c))        
+        // this.comments = comments.map(c => new Comment(c))
+    }
+
+    getUserById(id){
+      const user = this.location.user.find(u => u.id == id)
+      
+
     }
 
     get formHTML(){
@@ -64,13 +70,13 @@ class Location {
     get liHTML(){
         return(`
         <li class='card' data-id="${this.id}">
-        <img src="bg-01.jpg">
-        <div class='content-wrapper'>
-          <h2 class="card-title">${this.name}</h2>
-          <span class='author'>${this.user}</span>
-          <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
-          <!-- <span class=''>click me</span> -->
-        </div>
+          <img src="styles/images/bg-01.jpg">
+            <div class='content-wrapper'>
+              <h2 class="card-title">${this.name}</h2>
+              <span class='author'>${this.user}</span>
+              <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
+            <!-- <span class=''>click me</span> -->
+            </div>
         <div class='more-info-container'>
           <div class='location-gallery'></div> 
           <p class='location-description'>${this.content}</p>
@@ -88,15 +94,17 @@ class Location {
     get updateLiHTML(){
       return(`
       <li class='card' data-id="${this.id}">
-      <img src="bg-01.jpg">
+      <img src="styles/images/bg-01.jpg">
       <div class='content-wrapper'>
         <h2 class="card-title">${this.name}</h2>
+        <a href='#' class='verification-button'>
+          <img scr='styles/images/shutterstock_355898753.png'>
+        </a>
         <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
       </div>
       <div class='more-info-container'>
         <div class='location-gallery'></div> 
         <p class='location-description'>${this.content}</p>
-        <a href='#' class='verification-button'><img scr='shutterstock_355898753.png'></a>
         <button class="contact3-form-btn" data-id="${this.id}">Update</button>
       </div>
       </li>
@@ -106,7 +114,7 @@ class Location {
     get profileLiHTML(){
       return(`
       <li class='card' data-id="${this.id}">
-        <img src="bg-01.jpg">
+        <img src="styles/images/bg-01.jpg">
         <div class='content-wrapper'>
           <h2 class="card-title">${this.name}</h2>
         </div>

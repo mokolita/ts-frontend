@@ -25,7 +25,7 @@ class Profile extends PageManager{
 
     updateBindingsAndEventListeners(){
         const submit = this.container.querySelector('button')
-        submit.addEventListener('click', this.handleFormSubmit.bind(this) )
+        submit.addEventListener('submit', this.handleFormSubmit.bind(this) )
     }
 
     handleFormSubmit(e){
@@ -88,7 +88,7 @@ class Profile extends PageManager{
     renderForm(location){
         if(location){
             this.container.innerHTML = location.formHTML
-            this.location.initBindingsAndEventListeners()
+            this.updateBindingsAndEventListeners() //WHAT DO I DO?! Also, why does submit log me out?
         }else{
             this.handleError({
                 type: "404 Not Found",
