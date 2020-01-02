@@ -13,6 +13,9 @@ class Profile extends PageManager{
     profileBindingsAndEventListeners(){
         const locList = this.container.querySelector('ul')
         locList.addEventListener('click', this.handleLocationClick.bind(this))
+
+        const newLoc = this.container.querySelector('button')
+        newLoc.addEventListener('click', this.addNewLocation.bind(this) )
     }
 
     locationsBindingsAndEventListeners(){
@@ -31,9 +34,16 @@ class Profile extends PageManager{
 
     addNewLocation(e){
         if(e.target.tagName === 'BUTTON'){
+            if(e.target.dataset.id){
             const locId = e.target.dataset.id 
             const location = this.getLocationById(locId)
             this.renderForm(location)
+            }else {
+                const location = new Location(this.container, this.adapter)
+                location.name = ''
+                location.content = ''
+                this.renderForm(location)
+            }
             
         }
         
@@ -70,19 +80,22 @@ class Profile extends PageManager{
         }else{
             this.handleError({
                 type: "404 Not Found",
-                msg: "Dog was not found"
+                msg: "Location was not found"
             })
         }
     }
 
     renderForm(location){
-        console.log(location.name)
         if(location){
             this.container.innerHTML = location.formHTML
-            this.updateBindingsAndEventListeners()
+            this.location.initBindingsAndEventListeners()
+        }else{
+            this.handleError({
+                type: "404 Not Found",
+                msg: "Something went wrong"
+            })
         }
     }
-
 
     getLocationById(id){
         return this.user.locations.find(l => l.id == id)

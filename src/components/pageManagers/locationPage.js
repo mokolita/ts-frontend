@@ -6,6 +6,7 @@ class locationPage extends PageManager {
     }
 
     initBindingsAndEventListeners(){
+        console.log("location page initBindings")
         this.form = this.container.querySelector(`form`)
 
         this.form.addEventListener('submit', this.handleSubmit.bind(this))
