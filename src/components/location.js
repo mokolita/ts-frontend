@@ -54,6 +54,7 @@ class Location {
         this.address = address
         this.getUserById
         // this.comments = comments.map(c => new Comment(c))
+        this.baseURL = 'http://localhost:3000'
     }
 
     get getUserById(){

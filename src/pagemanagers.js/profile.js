@@ -37,6 +37,7 @@ class Profile extends PageManager{
         //debugger
         try{
              await this.adapter.updateLocation(params)
+             this.redirect('profile')
         }catch(err){
             this.handleError(err)
         }
