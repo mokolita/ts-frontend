@@ -13,6 +13,27 @@ class ProfileAdapter{
         return this.baseAdapter.headers
     }
 
+    async updateLocation(params){
+        const {name, content, address, id} = params
+        const url = `${this.baseURL}/locations/${id}` 
+        const body = {
+            location: {
+                name,
+                content,
+                address,
+                id
+        
+            }
+        }
+        const res = await fetch(url, {
+            method: 'PATCH',
+            headers: this.headers,
+            body: JSON.stringify(body)
+        })
+        await this.baseAdapter.checkStatus(res)
+        return await res.json()
+    }
+
     async getUser(){
         const res = await fetch(`${this.baseURL}/profile`, {
             headers:  this.headers

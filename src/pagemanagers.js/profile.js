@@ -15,34 +15,41 @@ class Profile extends PageManager{
         locList.addEventListener('click', this.handleLocationClick.bind(this))
 
         const newLoc = this.container.querySelector('button')
-        newLoc.addEventListener('click', this.addNewLocation.bind(this) )
+        newLoc.addEventListener('click', this.updateLocation.bind(this) )
     }
 
     locationsBindingsAndEventListeners(){
         const addButton = this.container.querySelector('button')
-        addButton.addEventListener('click', this.addNewLocation.bind(this))
+        addButton.addEventListener('click', this.updateLocation.bind(this))
     }
 
     updateBindingsAndEventListeners(){
-        const submit = this.container.querySelector('button')
+        const submit = this.container.querySelector('form')
         submit.addEventListener('submit', this.handleFormSubmit.bind(this) )
     }
 
-    handleFormSubmit(e){
-        console.log("profile page handleFormSubmit")
+    async handleFormSubmit(e){
+        e.preventDefault()
+        
+        const [name, address, id] = Array.from(e.target.querySelectorAll('input')).map(i => i.value)
+        const content = e.target.querySelector('textarea').value 
+        const params = {name, content, address, id}
+        //debugger
+        try{
+             await this.adapter.updateLocation(params)
+        }catch(err){
+            this.handleError(err)
+        }
     }
 
-    addNewLocation(e){
+    updateLocation(e){
         if(e.target.tagName === 'BUTTON'){
             if(e.target.dataset.id){
             const locId = e.target.dataset.id 
             const location = this.getLocationById(locId)
             this.renderForm(location)
-            }else {
-                const location = new Location(this.container, this.adapter)
-                location.name = ''
-                location.content = ''
-                this.renderForm(location)
+            }else{
+                alert('this location has no id') 
             }
             
         }

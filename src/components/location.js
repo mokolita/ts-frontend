@@ -6,31 +6,33 @@ class Location {
       
     <div class="container-contact3">
       <div class="wrap-contact3">
-        <form class="contact3-form validate-form" id="${location ? 'edit' : 'new'}-location-form">
+        
+        <form class="contact3-form validate-form" id="${location.id ? 'edit' : 'new'}-location-form">
           <span class="contact3-form-title">
-            Location Form
-          </span>
-  
+              Location Form
+          </span> 
+          
           <div class="wrap-input3 validate-input" data-validate="Name is required">
             <label for="name">Location Name</label>
-            <input class="input3" type="text" name="name" id="name" value="${location ? location.name : ''}" required >
+            <input class="input3" type="text" name="name" id="name" value="${location.name ? location.name : ''}" required >
               <span class="focus-input3"></span>
           </div>
   
           <div class="wrap-input3 validate-input">
             <label for="content">Tell us about your spot:</label>
             <textarea form='add-location-form' class="input3" name="content" required >
-            ${location ? location.content : ''}
+            ${location.content ? location.content : ''}
             </textarea>
               <span class="focus-input3"></span>
           </div>
   
           <div class="wrap-input3 validate-input" data-validate = "Address is required">
               <label for="address">Address</label>
-              <input class="input3" type="text" name="address" id="address"  value="${location ? location.address : ''}" required >
+              <input class="input3" type="text" name="address" id="address"  value="${location.address ? location.address : ''}" required >
                <span class="focus-input3"></span>
-            </div>
-  
+          </div>
+          ${location.id ? '<input type="hidden" value="' +location.id+ '">': ''}
+
           <div class="container-contact3-form-btn">
             <button class="contact3-form-btn">
               Submit
@@ -44,23 +46,29 @@ class Location {
   }
 
 
-    constructor(location){
-        const {id, name, content, latitude, longitude, user_id} = location
+    constructor(location={}){
+        const {id, name, content, address, user_id} = location
         this.id = id
         this.name = name 
-        this.content = content
-        this.latitude = latitude 
-        this.longitude = longitude 
-        this.user = user_id 
-        this.address = null
+        this.content = content 
+        this.address = address
+        this.getUserById
         // this.comments = comments.map(c => new Comment(c))
     }
 
-    getUserById(id){
-      const user = this.location.user.find(u => u.id == id)
-      
-
+    get getUserById(){
+      const userObj = this.getUser(this.id)
+      this.user = userObj
+      console.log(this.user)
     }
+
+    async getUser(id){
+      const res = await fetch(`${this.baseURL}/users/${id}`, {
+          headers:  this.headers
+      })
+      await this.baseAdapter.checkStatus(res)
+      return await res.json()
+  }
 
     get formHTML(){
       return Location.formHTML(this)
@@ -74,7 +82,7 @@ class Location {
             <div class='content-wrapper'>
               <h2 class="card-title">${this.name}</h2>
               <span class='author'>${this.user}</span>
-              <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
+              <p class='addresss'>Address${this.address}</p>
             <!-- <span class=''>click me</span> -->
             </div>
         <div class='more-info-container'>
@@ -100,7 +108,7 @@ class Location {
         <a href='#' class='verification-button'>
           <img scr='styles/images/shutterstock_355898753.png'>
         </a>
-        <p class='map-coords'>Latitude:${this.latitude} - Longitude: ${this.longitude}</p>
+        <p class='address'>Address:${this.address}</p>
       </div>
       <div class='more-info-container'>
         <div class='location-gallery'></div> 

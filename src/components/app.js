@@ -10,7 +10,7 @@ class App {
             'signup': new Signup(this.page, this.adapter),
             'home': new HomePage(this.page, this.adapter),
             'profile': new Profile(this.page, this.adapter),
-            //'location': new LocationPage(this.page, this.adapter)
+            'location': new LocationPage(this.page, this.adapter)
         })
         const navbar = new Navbar(this.navbar, this.adapter) 
 

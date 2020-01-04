@@ -19,11 +19,12 @@ class LocationAdapter{
             body: JSON.stringify(params)
         })
         await this.baseAdapter.checkStatus(res)
-        this.baseAdapter.token = res.headers.get('authorization').split(' ')[1]
+        return await res.json()
+        
     }
 
-    async getUser(){
-        const res = await fetch(`${this.baseURL}/user`, {
+    async getUser(id){
+        const res = await fetch(`${this.baseURL}/users/${id}`, {
             headers:  this.headers
         })
         await this.baseAdapter.checkStatus(res)
