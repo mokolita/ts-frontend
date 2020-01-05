@@ -52,24 +52,26 @@ class Location {
         this.name = name 
         this.content = content 
         this.address = address
-        this.getUserById
+        this.user = user_id
+        // if(location.id){
+        // this.getUserById
         // this.comments = comments.map(c => new Comment(c))
-        this.baseURL = 'http://localhost:3000'
+        // this.baseURL = 'http://localhost:3000'
+        // }
     }
 
-    get getUserById(){
-      const userObj = this.getUser(this.id)
-      this.user = userObj
-      console.log(this.user)
-    }
+  //   get getUserById(){
+  //     const userObj = this.getUser(this.user)
+  //     this.user = userObj
+  //   }
 
-    async getUser(id){
-      const res = await fetch(`${this.baseURL}/users/${id}`, {
-          headers:  this.headers
-      })
-      await this.baseAdapter.checkStatus(res)
-      return await res.json()
-  }
+  //   async getUser(id){
+  //     const res = await fetch(`http://localhost:3000/users/${id}`, {
+  //         headers:  this.headers
+  //     })
+  //     await this.baseAdapter.checkStatus(res)
+  //     return await res.json()
+  // }
 
     get formHTML(){
       return Location.formHTML(this)
@@ -82,7 +84,7 @@ class Location {
           <img src="styles/images/bg-01.jpg">
             <div class='content-wrapper'>
               <h2 class="card-title">${this.name}</h2>
-              <span class='author'>${this.user}</span>
+              <!--span class='author'>${this.user}</span-->
               <p class='addresss'>Address${this.address}</p>
             <!-- <span class=''>click me</span> -->
             </div>
@@ -91,9 +93,9 @@ class Location {
           <p class='location-description'>${this.content}</p>
           <button class='verification-button'><img scr=''></button>
           <div class='comment-container'>
-            <ul>
+            <!--ul>
               <li class='comment'></li>
-            </ul>
+            </ul-->
           </div>
         </div>
         </li>

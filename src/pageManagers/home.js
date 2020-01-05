@@ -31,13 +31,13 @@ class HomePage extends PageManager{
     this.container.innerHTML = ul
 }
 
-    renderMap(){
-        this.mapContainer = this.container.appendTo('div#map-container')
-        this.map = new MapManager(this.mapContainer)
+    // renderMap(){
+    //     this.mapContainer = this.container.appendTo('div#map-container')
+    //     this.map = new MapManager(this.mapContainer)
 
-        this.mapContainer.innerHTML = this.map
+    //     this.mapContainer.innerHTML = this.map
 
-    }
+    // }
 
     get staticHTML(){
         return(` `)

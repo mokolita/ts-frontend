@@ -23,9 +23,10 @@ class LocationPage extends PageManager {
             location: {name, content, address, id}
             }
             this.adapter.newLocationForm(params)
+            this.redirect('home')
         try{
           await this.adapter.login(params)
-          this.redirect('profile')
+          
         }catch(err){
           this.handleError(err)
         }
